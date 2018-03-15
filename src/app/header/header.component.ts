@@ -1,3 +1,4 @@
+import { Aggregato } from './../models/aggregato';
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { MyServiceService } from '../services/my-service.service';
 import { MessaggiService } from '../services/messaggi.service';
@@ -18,11 +19,14 @@ export class HeaderComponent implements OnInit {
   numberVal: number;
   boolVal: boolean;
   arrayStrings: string[];
+/*
   posts: Post[];
   comments: Comment[];
   albums: Album[];
   photos: Photo[];
+*/
   notifiche: number;
+  aggregato: Aggregato;
 
   constructor(private service: MyServiceService,
               private messaggi: MessaggiService,
@@ -34,11 +38,12 @@ export class HeaderComponent implements OnInit {
 
     this.arrayStrings = ['A', 'R', 'R', 'A', 'Y', ' ', ':', ')'];
     this.notifiche = 0;
-
+/*
     this.posts = [];
     this.comments = [];
     this.albums = [];
     this.photos = [];
+*/
   }
 
   ngOnInit() {
@@ -60,6 +65,10 @@ export class HeaderComponent implements OnInit {
       }, 30000);
     });
 
+    this.com.getData().subscribe((data) => {
+      this.aggregato = data;
+    });
+/*
     this.com.getPosts().subscribe( posts => {
       this.posts = posts.filter( x => x.userId === this.contx.getUserId() );
 
@@ -87,6 +96,7 @@ export class HeaderComponent implements OnInit {
         });
       });
     });
+*/
   }
 
   toggle() {

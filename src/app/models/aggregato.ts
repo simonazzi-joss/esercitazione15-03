@@ -12,7 +12,7 @@ export class Aggregato {
 
     constructor() {
         this.posts = [];
-        this.comments = []
+        this.comments = [];
         this.albums = [];
         this.photos = [];
     }

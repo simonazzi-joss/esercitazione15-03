@@ -30,11 +30,33 @@
       <span class="badge">{{notifiche}}</span>
     </div>
 
+    <div *ngIf="(aggregato.posts).length" class="entry">
+      <label>Post</label>
+      <span class="badge">{{aggregato.posts.length}}</span>
+    </div>
+
+    <div *ngIf="(aggregato.comments).length" class="entry">
+      <label>Commenti</label>
+      <span class="badge">{{aggregato.comments.length}}</span>
+    </div>
+
+    <div *ngIf="(aggregato.albums).length" class="entry">
+      <label>Album</label>
+      <span class="badge">{{aggregato.albums.length}}</span>
+    </div>
+
+    <div *ngIf="(aggregato.photos).length" class="entry">
+      <label>Fotografie</label>
+      <span class="badge">{{aggregato.photos.length}}</span>
+    </div>
+  </div>
+
+<!--
     <div *ngIf="posts" class="entry">
       <label>Post</label>
       <span class="badge">{{posts.length}}</span>
     </div>
-    
+
     <div *ngIf="comments" class="entry">
       <label>Commenti</label>
       <span class="badge">{{comments.length}}</span>
@@ -50,4 +72,5 @@
       <span class="badge">{{photos.length}}</span>
     </div>
   </div>
+-->
 </div>

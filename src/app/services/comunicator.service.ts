@@ -52,7 +52,6 @@ export class ComunicatorService {
         utente.posts = posts.filter( x => x.userId === this.contx.getUserId() );
 
         this.getComments().subscribe( comments => {
-          utente.comments = [];
           utente.posts.forEach((p) => {
             comments.forEach((c) => {
               if (p.id === c.postId) {
@@ -65,7 +64,6 @@ export class ComunicatorService {
             utente.albums = albums.filter( x => x.userId === this.contx.getUserId() );
 
             this.getPhotos().subscribe( photos => {
-              utente.photos = [];
               utente.albums.forEach((p) => {
                 photos.forEach((c) => {
                   if (p.id === c.albumId) {
