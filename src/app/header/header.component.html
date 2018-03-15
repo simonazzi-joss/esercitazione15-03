@@ -1,0 +1,53 @@
+<h3>Header</h3>
+<div class="riga">
+  <div class="header-data">
+    <div class="entry">
+      <p>String</p>
+      <label>{{stringVal}}</label>
+    </div>
+
+    <div class="entry">
+      <p>Number</p>
+      <label>{{numberVal}}</label>
+    </div>
+
+    <div class="entry">
+      <p>Boolean</p>
+      <label>{{boolVal}}</label>
+    </div>
+
+    <div class="entry">
+      <button (click)="toggle()">Show array</button>
+    </div>
+
+    <div class="entry" [ngClass]="{'hidden': !boolVal}">
+      <span *ngFor="let ch of arrayStrings">{{ch}}</span>
+    </div>
+  </div>
+  <div class="header-info">
+    <div class="entry">
+      <label>Notifiche</label>
+      <span class="badge">{{notifiche}}</span>
+    </div>
+
+    <div *ngIf="posts" class="entry">
+      <label>Post</label>
+      <span class="badge">{{posts.length}}</span>
+    </div>
+    
+    <div *ngIf="comments" class="entry">
+      <label>Commenti</label>
+      <span class="badge">{{comments.length}}</span>
+    </div>
+
+    <div *ngIf="albums" class="entry">
+      <label>Album</label>
+      <span class="badge">{{albums.length}}</span>
+    </div>
+
+    <div *ngIf="photos" class="entry">
+      <label>Fotografie</label>
+      <span class="badge">{{photos.length}}</span>
+    </div>
+  </div>
+</div>

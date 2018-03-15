@@ -1,0 +1,24 @@
+.riga {
+    display: flex;
+    flex-direction: row;
+
+    .header-data {
+        flex-grow: 1;
+    }
+
+    .header-info {
+
+        .entry {
+            display: flex;
+            flex-direction: row;
+
+            label {
+                flex-grow: 1;
+                margin: 10px 10px 10px 5px;
+            }
+            span {
+                margin: 10px 10px 10px 5px;
+            }
+        }
+    }
+}
