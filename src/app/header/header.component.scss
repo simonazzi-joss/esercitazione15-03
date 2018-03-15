@@ -1,13 +1,13 @@
 .riga {
     display: flex;
     flex-direction: row;
+    margin-bottom: 30px;
 
     .header-data {
         flex-grow: 1;
     }
 
     .header-info {
-
         .entry {
             display: flex;
             flex-direction: row;

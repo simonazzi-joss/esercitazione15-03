@@ -8,6 +8,7 @@ import { Comment } from '../models/comment';
 import { Photo } from '../models/photo';
 import { Album } from '../models/Album';
 import { ContextService } from './context.service';
+import { Aggregato } from '../models/aggregato';
 
 @Injectable()
 export class ComunicatorService {
@@ -16,11 +17,6 @@ export class ComunicatorService {
   constructor(private http: HttpClient,
               private contx: ContextService) {
     this.notifiche = 10;
-
-    setInterval(() => {
-      this.notifiche += 1;
-      console.log(this.notifiche);
-    }, 1000);
   }
 
   getUserInfo(): Observable<User> {
@@ -44,5 +40,45 @@ export class ComunicatorService {
 
   sendNewUser(obj): Observable<string[]> {
     return this.http.post<string[]>(this.contx.getServicePath() + 'users', obj);
+  }
+
+  getData(): Observable<Aggregato> {
+    const utente = new Aggregato();
+
+    this.getUserInfo().subscribe((user) => {
+      utente.user = user;
+
+      this.getPosts().subscribe((posts) => {
+        utente.posts = posts.filter( x => x.userId === this.contx.getUserId() );
+
+        this.getComments().subscribe( comments => {
+          utente.comments = [];
+          utente.posts.forEach((p) => {
+            comments.forEach((c) => {
+              if (p.id === c.postId) {
+                utente.comments.push(c);
+              }
+            });
+          });
+
+          this.getAlbums().subscribe( albums => {
+            utente.albums = albums.filter( x => x.userId === this.contx.getUserId() );
+
+            this.getPhotos().subscribe( photos => {
+              utente.photos = [];
+              utente.albums.forEach((p) => {
+                photos.forEach((c) => {
+                  if (p.id === c.albumId) {
+                    utente.photos.push(c);
+                  }
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
+    return of(utente);
   }
 }

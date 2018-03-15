@@ -54,13 +54,11 @@ export class HeaderComponent implements OnInit {
 
     this.com.getNotifiche().subscribe( not => {
       this.notifiche = not;
-/*
+
       setInterval(() => {
         this.notifiche += 1;
       }, 30000);
-*/
     });
-
 
     this.com.getPosts().subscribe( posts => {
       this.posts = posts.filter( x => x.userId === this.contx.getUserId() );
@@ -80,7 +78,7 @@ export class HeaderComponent implements OnInit {
       this.albums = albums.filter( x => x.userId === this.contx.getUserId() );
 
       this.com.getPhotos().subscribe( photos => {
-        this.posts.forEach((p) => {
+        this.albums.forEach((p) => {
           photos.forEach((c) => {
             if (p.id === c.albumId) {
               this.photos.push(c);

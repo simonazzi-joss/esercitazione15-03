@@ -2,6 +2,7 @@ import { User } from './user';
 import { Post } from './post';
 import { Photo } from './photo';
 import { Album } from './album';
+import { Comment } from './comment';
 export class Aggregato {
     user: User;
     posts: Post[];
@@ -9,21 +10,10 @@ export class Aggregato {
     albums: Album[];
     photos: Photo[];
 
-    constructor() { }
-
-    setUser(user: User) {
-        this.user = user;
-    }
-    setPosts(posts: Post[]) {
-        this.posts = posts;
-    }
-    setComments (comments: Comment[]) {
-        this.comments = comments;
-    }
-    setAlbums (albums: Album[]) {
-        this.albums = albums;
-    }
-    setPhotos (photos: Photo[]) {
-        this.photos = photos;
+    constructor() {
+        this.posts = [];
+        this.comments = []
+        this.albums = [];
+        this.photos = [];
     }
 }
