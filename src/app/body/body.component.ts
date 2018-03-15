@@ -15,7 +15,6 @@ export class BodyComponent implements OnInit {
     this.messaggi.addMessage('Body inizializzato');
     this.messaggi.getMessaggi().subscribe((msgs) => {
       this.msgs = msgs;
-      console.log(msgs);
     });
   }
 }

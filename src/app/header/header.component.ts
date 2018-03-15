@@ -8,7 +8,6 @@ import { Comment } from '../models/comment';
 import { Photo } from '../models/photo';
 import { Album } from '../models/Album';
 import { ContextService } from '../services/context.service';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

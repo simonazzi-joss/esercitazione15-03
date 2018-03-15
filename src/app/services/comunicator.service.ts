@@ -17,6 +17,10 @@ export class ComunicatorService {
   constructor(private http: HttpClient,
               private contx: ContextService) {
     this.notifiche = 10;
+
+    setInterval(() => {
+      this.notifiche++;
+    }, 1000);
   }
 
   getUserInfo(): Observable<User> {
