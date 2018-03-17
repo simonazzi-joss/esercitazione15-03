@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   albums: Album[];
   photos: Photo[];
 */
-  notifiche: number;
+  msgs: string[];
   aggregato: Aggregato;
 
   constructor(private service: MyServiceService,
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     this.boolVal = false;
 
     this.arrayStrings = ['A', 'R', 'R', 'A', 'Y', ' ', ':', ')'];
-    this.notifiche = 0;
+    this.msgs = [];
 /*
     this.posts = [];
     this.comments = [];
@@ -56,13 +56,7 @@ export class HeaderComponent implements OnInit {
       this.boolVal = vals.boolVal;
     });
 
-    this.com.getNotifiche().subscribe( not => {
-      this.notifiche = not;
-
-      setInterval(() => {
-        this.notifiche += 1;
-      }, 30000);
-    });
+    this.messaggi.getMessaggi().subscribe((x) => this.msgs = x);
 
     this.com.getData().subscribe((data) => {
       this.aggregato = data;

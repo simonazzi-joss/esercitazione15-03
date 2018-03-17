@@ -7,7 +7,7 @@ import { MessaggiService } from '../services/messaggi.service';
   styleUrls: ['./body.component.scss']
 })
 export class BodyComponent implements OnInit {
-  private msgs: string[];
+  msgs: string[];
 
   constructor(private messaggi: MessaggiService) { }
 
@@ -16,5 +16,9 @@ export class BodyComponent implements OnInit {
     this.messaggi.getMessaggi().subscribe((msgs) => {
       this.msgs = msgs;
     });
+
+    setInterval(() => {
+      this.messaggi.addMessage('msg ' + this.msgs.length);
+    }, 30000);
   }
 }
